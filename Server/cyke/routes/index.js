@@ -16,7 +16,7 @@ console.log(port)
 var sendDirections1 = function(req,res, next){
 console.log(req.body);
 var obj = new routefinder(8);
-res.send(obj.getCSV());
+res.send("thanks");
 }
 
 router.post('/sendDirections' , [sendDirections1], function(req,res, next){

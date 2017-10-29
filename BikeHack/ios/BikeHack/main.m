@@ -6,11 +6,13 @@
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  */
-'use strict';
 
-var resolvePlugins = require('../lib/resolvePlugins');
+#import <UIKit/UIKit.h>
 
-module.exports = function(options) {
-  // For future internal pipeline usage
-  return null;
+#import "AppDelegate.h"
+
+int main(int argc, char * argv[]) {
+  @autoreleasepool {
+    return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
+  }
 }
