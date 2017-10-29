@@ -1,0 +1,3 @@
+rootProject.name = 'BikeHack'
+
+include ':app'
