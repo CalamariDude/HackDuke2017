@@ -15,6 +15,15 @@ function distance(lat1, lon1, lat2, lon2) {
 }
 function fatRoad(lat, long, startLat,startLong, stopLat, stopLong) { //Border lat longs
   var antiSlope = -(stopLat-startLat)/(stopLong-startLong);
+  var bufferX = .002;
+  var Blat1 = startLat + bufferX;
+  var Blat2 = startLat - bufferX;
+  var Blat3 = stopLat + bufferX;
+  var Blat4 = stopLat - bufferX;
+  var Blong1 = startLong + antiSlope*bufferX;
+  var Blong2 = startLong - antiSlope*bufferX;
+  var Blong3 = stopLong + antiSlope*bufferX;
+  var Blong4 = stopLong - antiSlope*bufferX;
 
   var polygon = [ [Blat1, Blon1], [Blat2, Blon2], [Blat3, Blon3], [Blat4, Blon4] ];
   return inside([ lat,long ], polygon);
