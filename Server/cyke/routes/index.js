@@ -7,13 +7,12 @@ var bodyParser = require('body-parser');
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
-app.use(bodyParser.urlencoded({ extended: true }));
-var jsonParser = bodyParser.json()
+app.use(bodyParser.json());
 
 var port = process.env.PORT || 8080;        // set our port
 console.log(port)
 // test route to make sure everything is working (accessed at GET http://localhost:8080/api)
-router.post('/sendDirections', jsonParser,  function(req,res){
+router.post('/sendDirections', function(req,res){
      console.log("user attempting to send directions");
      console.log("directions = ", req.body);
      res.send("thanks!");
