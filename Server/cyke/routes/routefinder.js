@@ -6,7 +6,7 @@ class routefinder{
 
      constructor(carweight) {
           this.carweight = carweight;
-          this.arr = undefined;
+          var arr = undefined;
 
           const csvFilePath='../../north_carolina_bicycle_crash_data_heatmap_.csv';
           const csv=require('csvtojson')
@@ -20,7 +20,7 @@ class routefinder{
                .on('done',(error)=>{
                     console.log('end')
                })
-               console.log(this.arr);
+               console.log(arr);
 }
 
 getCSV(){
