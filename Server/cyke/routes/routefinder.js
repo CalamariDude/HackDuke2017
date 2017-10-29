@@ -5,6 +5,20 @@ var googleMapsClient = require('@google/maps').createClient({
   key: 'AIzaSyDht0d9b2J4L4TTs7TAD-sTCoV2TehcAvU'
 });
 
+class routefinder{
+
+     constructor(source, destination) {
+
+          this.fixedCrashes = this.getCSV().then(function(resolve){
+               this.fixedCrashes = resolve;
+               console.log(this.fixedCrashes);
+               // this.formatJSONTo2DJSON(resolve).then((resolve)=>{
+               //      return resolve;
+               // })
+          })
+     }
+
+
 GoogleMapDir(source, dest) {
   return new Promise(function(resolve, reject) {
 
@@ -21,7 +35,47 @@ GoogleMapDir(source, dest) {
     });
   });
 }
-distance(lat1, lon1, lat2, lon2) {
+
+//get google maps routes with call
+//then for each route{  var biike = Distancebikers()
+//var
+//var  = fatRoad(this.fixedCrashes)
+//}
+
+cost(){
+     return Promise(function(resolve, reject) {
+          var routes = GoogleMapDir().then(resolve){
+               return resolve;
+          }
+          var routecostmap= [];
+
+          routes.foreach(function(route)){
+               var cost = 0;
+               route.legs.foreach(function(leg){
+                         var crashesonroad = this.fatRoad(this.fixedCrashes, leg.start_location[0], leg.start_location[1], leg.end_location[0], leg.end_location[1]);
+                         var bikesOnRoad = this.distanceAndBikes(leg.start_location[0], leg.start_location[1], leg.end_location[0], leg.end_location[1] );
+                         cost += crashesonroad/bikesOnRoad;
+               })
+               routecostmap.push(cost);
+          }
+          int largest= 0;
+          var i
+          for( i in routecostmap){
+               if(routecostmap[i]> routecostmap[largest]){
+                    largest = i;
+               }
+          }
+          if(largest == 0){
+               return resolve(true);
+          }
+          else{
+               return resolve(false);
+          }
+     });
+}
+
+
+distanceAndBikes(lat1, lon1, lat2, lon2) {
 	var radlat1 = Math.PI * lat1/180
 	var radlat2 = Math.PI * lat2/180
 	var theta = lon1-lon2
@@ -30,7 +84,7 @@ distance(lat1, lon1, lat2, lon2) {
 	dist = Math.acos(dist)
 	dist = dist * 180/Math.PI
 	dist = dist * 60 * 1.1515
-	return dist
+	return .5*dist
 }
 fatRoad(json, startLat,startLong, stopLat, stopLong) { //Border lat longs
 
@@ -56,18 +110,7 @@ fatRoad(json, startLat,startLong, stopLat, stopLong) { //Border lat longs
 }
 
 // Constructor
-class routefinder{
 
-     constructor(carweight) {
-          this.carweight = carweight;
-          this.fixedCrashes = this.getCSV().then(function(resolve){
-               this.fixedCrashes = resolve;
-               console.log(this.fixedCrashes);
-               // this.formatJSONTo2DJSON(resolve).then((resolve)=>{
-               //      return resolve;
-               // })
-          })
-     }
 
 getCSV(){
      return new Promise(function (resolve, reject){

@@ -28,6 +28,12 @@ router.post('/sendDirections' , [sendDirections1], function(req,res, next){
                res.send("some type of error");
      });
 
+router.get('/send', function(req, res){
+     console.log("user attempting to get optimal routes");
+     var source = req.body.source;
+     var destination = req.body.destination;
+     var obj = new routefinder(souce, destination);
+})
 
 router.get('/', function(req, res) {
     console.log("here");
